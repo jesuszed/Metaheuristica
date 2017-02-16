@@ -28,6 +28,7 @@ MQKPInstance::~MQKPInstance() {
 
 }
 
+
 double MQKPInstance::getMaxCapacityViolation(MQKPSolution &solution) {
 
 	double *sumWeights = new double[this->_numKnapsacks + 1];
@@ -97,21 +98,39 @@ void MQKPInstance::readInstance(char *filename, int numKnapsacks) {
 	{
 		_profits[i] = new int[_numObjs];
 	}
+	_weights = new int[_numObjs];
+	_capacities = new int[numKnapsacks];
 
-	//3.
+	//3. Leer la matriz (Comprobar funcionamiento)
 	int aux;
 	for(int i=0; i<numObjs; i++){
 
 		aux = _numObjs - i;
 		while(aux!=0){
 			stream >> dato;
+			if (i == 0){
+				_profits[_numObjs-aux][numObjs-aux] = dato;
+			}
+			else {
+				_profits[i-1][numObjs-aux] = dato;
+				_profits[numObjs-aux][i-1] = dato;
+			}
 			aux--;
 		}
 
+	}
+	//Se acaba de leer la Matriz
+	stream.getline();
+	stream.getline();
+	stream.getline();
+
+	for int(i=0; i<_numObjs; i++){
+		stream >> dato;
+		_weights[i] = dato;
 	}
 
 
 	stream.close();
 
-
+	//queda punto 4
 }

@@ -1,6 +1,6 @@
 /**
  * MQKPInstance.h
- * 
+ *
  * Fichero que define la clase MQKPInstance. Forma parte del código esqueleto para el problema de las múltiples mochilas cuadráticas, ofrecido para las prácticas de la asignatura Metaheurísticas del Grado de Ingeniería Informática de la Universidad de Córdoba
  *
  * @author Carlos García cgarcia@uco.es
@@ -50,6 +50,9 @@ public:
 	 */
 	~MQKPInstance();
 
+	int getNumKnapsacks(){return _numKnapsacks;};
+	int getNumObjs(){return _numObjs;};
+
 	/**
 	 * Función de lectura de un fichero de entrada
 	 * @param[in] filename Nombre del fichero donde están los datos de la instancia
@@ -76,4 +79,3 @@ public:
 };
 
 #endif
-
